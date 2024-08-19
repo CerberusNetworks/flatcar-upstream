@@ -8,7 +8,8 @@ EGIT_REPO_URI="https://github.com/flatcar/init.git"
 if [[ "${PV}" == 9999 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 else
-	EGIT_COMMIT="52eebc03e02f399d91dad5a2a4fece70608a94df" # flatcar-master
+	EGIT_BRANCH='krnowak/veth-bridge-on-diskless'
+	EGIT_COMMIT="fcfd05492dd0460fb96df69827bb659568f5dffb" # flatcar-master
 	KEYWORDS="amd64 arm arm64 x86"
 fi
 
