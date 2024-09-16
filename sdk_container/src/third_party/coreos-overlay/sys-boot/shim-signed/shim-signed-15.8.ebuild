@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Signed UEFI Shim loader"
 HOMEPAGE="https://github.com/rhboot/shim"
-SRC_URI="https://mirror.release.flatcar-linux.net/coreos/shimx64.efi.signed"
+SRC_URI="amd64? https://mirror.release.flatcar-linux.net/coreos/shimx64-${PV}.efi.signed"
 KEYWORDS="amd64 arm64"
 
 LICENSE="BSD"
@@ -15,5 +15,5 @@ S=${WORKDIR}
 
 src_install() {
   insinto /usr/lib/shim
-  doins "${DISTDIR}"/shimx64.efi.signed
+  newins "${DISTDIR}/shimx64-${PV}.efi.signed" shimx64.efi.signed
 }
