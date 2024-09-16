@@ -47,7 +47,7 @@ src_compile() {
   emake_args+=( ENABLE_SBSIGN=1 )
   emake_args+=( SBATPATH="${WORKDIR}/sbat.csv" )
 
-  if use production; then
+  if use official; then
     if [ -z "${SHIM_SIGNING_CERTIFICATE}" ]; then
       die "use production flag needs env SHIM_SIGNING_CERTIFICATE"
     fi
