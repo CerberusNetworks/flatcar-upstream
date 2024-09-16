@@ -10,9 +10,6 @@ KEYWORDS="amd64 arm64"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
-
-RDEPEND=""
 
 S=${WORKDIR}
 
