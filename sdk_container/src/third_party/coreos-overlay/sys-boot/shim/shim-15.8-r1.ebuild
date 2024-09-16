@@ -11,7 +11,7 @@ KEYWORDS="amd64 arm64"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="production"
+IUSE="official"
 
 RDEPEND=""
 # TODO: Would be ideal to depend on sys-boot/gnu-efi package, but
