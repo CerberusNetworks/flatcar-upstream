@@ -95,6 +95,9 @@ dev-util/catalyst ~amd64 ~arm64
 =sys-apps/kexec-tools-2.0.28 ~arm64
 =sys-apps/zram-generator-1.1.2 ~arm64
 
+# Latest needed for patches that fix arm64 Secure Boot.
+=sys-boot/grub-2.12-r6
+
 # Upgrade to latest version for secureboot
 =sys-boot/mokutil-0.6.0 ~amd64
 
