@@ -138,6 +138,7 @@ app-editors/vim-core
 
 app-emulation/qemu
 app-emulation/qemu-guest-agent
+app-emulation/virt-firmware
 
 app-eselect/eselect-iptables
 app-eselect/eselect-lib-bin-symlink
