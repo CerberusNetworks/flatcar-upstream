@@ -3,3 +3,5 @@ move dev-python/mapbox_earcut dev-python/mapbox-earcut
 move dev-qt/kdsingleapplication dev-libs/kdsingleapplication
 slotmove dev-util/kdevelop-pg-qt 5 0
 move dev-python/parse_type dev-python/parse-type
+move sys-firmware/edk2-ovmf sys-firmware/edk2
+move sys-firmware/edk2-ovmf-bin sys-firmware/edk2-bin
