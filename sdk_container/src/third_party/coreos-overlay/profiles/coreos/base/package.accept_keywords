@@ -106,7 +106,7 @@ dev-util/catalyst ~amd64 ~arm64
 =sys-boot/grub-2.12-r6
 
 # Upgrade to latest version for secureboot
-=sys-boot/mokutil-0.6.0 ~amd64
+=sys-boot/mokutil-0.6.0 ~amd64 ~arm64
 
 # Needed in SDK for Secure Boot on arm64.
 =sys-firmware/edk2-bin-202408 ~amd64 ~arm64
