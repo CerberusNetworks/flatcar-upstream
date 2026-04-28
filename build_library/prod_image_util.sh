@@ -276,13 +276,26 @@ create_prod_sysexts() {
 }
 
 create_oem_sysexts() {
-  local image_name="$1"
+  local image_name=${1}; shift
+  local requested_oem_sysexts_csv=${1}; shift
   local image_sysext_base="${image_name%.bin}_sysext.squashfs"
   local overlay_path
   overlay_path=$(portageq get_repo_path / coreos-overlay)
 
   local -a oem_sysexts
   get_oem_sysext_matrix "${ARCH}" oem_sysexts
+  if [[ ${requested_oem_sysexts_csv} != 'everything!' ]]; then
+      local -a all_oems requested_oems invalid_oems
+      all_oems=( "${oem_sysexts[@]}" )
+      all_oems=( "${all_oems[@]%%|*}" )
+      all_oems=( "${all_oems[@]#oem-}" )
+      mapfile -t requested_oems <<<"${requested_oem_sysexts_csv//,/$'\n'}"
+      mapfile -t invalid_oems < <(comm -23 <(printf '%s\n' "${requested_oems[@]}" | sort -u) <(printf '%s\n' "${all_oems[@]}" | sort -u))
+      if [[ ${#invalid_oems[@]} -gt 0 ]]; then
+          die "Requested OEMs to build sysexts for are invalid: ${invalid_oems[*]}, valid OEMs are ${all_oems[*]}"
+      fi
+      mapfile -t oem_sysexts < <(printf '%s\n' "${oem_sysexts[@]}" | grep '^oem-\('"${requested_oem_sysexts_csv//,/'\|'}"'\)|')
+  fi
 
   local sysext name metapkg useflags
   for sysext in "${oem_sysexts[@]}"; do
