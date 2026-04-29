@@ -49,6 +49,8 @@ DEFINE_string developer_data "" \
   "Insert a custom cloudinit file into the image."
 DEFINE_string devcontainer_binhost "${DEFAULT_DEVCONTAINER_BINHOST}" \
   "Override portage binhost configuration used in development container."
+DEFINE_string oem_sysexts "everything!" \
+  "A comma-separated list of OEMs to build, by default build all the OEM sysexts. Used only if building OEM sysexts"
 
 # include upload options
 . "${BUILD_LIBRARY_DIR}/release_util.sh" || exit 1
@@ -193,7 +195,7 @@ if [[ "${SYSEXT}" -eq 1 ]]; then
   create_prod_sysexts "${FLATCAR_PRODUCTION_IMAGE_NAME}"
 fi
 if [[ "${OEM_SYSEXT}" -eq 1 ]]; then
-  create_oem_sysexts "${FLATCAR_PRODUCTION_IMAGE_NAME}"
+  create_oem_sysexts "${FLATCAR_PRODUCTION_IMAGE_NAME}" "${FLAGS_oem_sysexts}"
 fi
 
 if [[ ${FLAGS_extract_update} -eq ${FLAGS_TRUE} ]]; then
